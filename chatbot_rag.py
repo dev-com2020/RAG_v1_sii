@@ -10,7 +10,7 @@ LM_STUDIO_URL = "http://localhost:1234"
 
 api_url = ""
 api_key = "ollama"  # Dla Ollama klucz jest dowolny, dla LM Studio też
-model_name = "llama3.1"  # Zmień, jeśli używasz innego modelu w Ollama/LM Studio
+model_name = "google/gemma-3-1b"  # Zmień, jeśli używasz innego modelu w Ollama/LM Studio
 
 try:
     requests.get(OLLAMA_URL)
@@ -30,7 +30,7 @@ except requests.exceptions.ConnectionError:
 client = OpenAI(base_url=api_url, api_key=api_key)
 
 # Inicjalizacja bazy wektorowej i modelu do tworzenia wektorów
-chroma_client = chromadb.Client()
+chroma_client = chromadb.PersistentClient(path='chroma_db')
 embedding_model = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")
 collection = chroma_client.get_collection("regulaminy_firmy")
 

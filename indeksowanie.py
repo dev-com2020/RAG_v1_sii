@@ -3,7 +3,7 @@ from sentence_transformers import SentenceTransformer
 
 # --- 1. Inicjalizacja ---
 # Używamy klienta ChromaDB, który działa w pamięci RAM
-client = chromadb.Client()
+client = chromadb.PersistentClient(path='chroma_db')
 
 # Model do tworzenia wektorów (embeddings). Wybierz model odpowiedni do języka polskiego.
 # "all-MiniLM-L6-v2" jest szybki, ale lepszy dla angielskiego.
