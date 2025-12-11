@@ -10,7 +10,8 @@ LM_STUDIO_URL = "http://localhost:1234"
 
 api_url = ""
 api_key = "ollama"  # Dla Ollama klucz jest dowolny, dla LM Studio też
-model_name = "google/gemma-3-1b"  # Zmień, jeśli używasz innego modelu w Ollama/LM Studio
+# model_name = "qwen/qwen3-4b-thinking-2507"
+model_name = "gemma3:1b"
 
 try:
     requests.get(OLLAMA_URL)
@@ -54,7 +55,9 @@ def run_rag(query):
     # Krok 2: Budowanie promptu z kontekstem (Augmentation)
     system_prompt = """
     Jesteś pomocnym asystentem AI o nazwie "Firmowy Bot". Twoim zadaniem jest odpowiadanie na pytania pracowników na podstawie dostarczonych fragmentów regulaminu.
-    Odpowiadaj tylko i wyłącznie na podstawie dostarczonego kontekstu. Jeśli w kontekście nie ma odpowiedzi na pytanie, odpowiedz: "Przepraszam, ale nie znalazłem odpowiedzi na to pytanie w dostarczonych dokumentach."
+    Odpowiadaj tylko i wyłącznie na podstawie dostarczonego kontekstu. 
+    Jeśli w kontekście nie ma odpowiedzi na pytanie, odpowiedz: 
+    "Przepraszam, ale nie znalazłem odpowiedzi na to pytanie w dostarczonych dokumentach."
     Bądź precyzyjny i trzymaj się faktów.
     """
 
